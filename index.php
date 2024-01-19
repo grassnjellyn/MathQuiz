@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once 'entity/Role.php';
 require_once 'entity/User.php';
 require_once 'dao/RoleDaoImpl.php';
