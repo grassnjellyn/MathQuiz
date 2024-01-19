@@ -12,6 +12,18 @@ class UserDaoImpl
         $link = null;
         return $stmt->fetchAll();
     }
+
+    public function userLogin($username, $password){
+        $link = ConnectionUtil::getMySQLConnection();
+        $query = 'SELECT * FROM user WHERE username = ? AND password = ?';
+        $stmt = $link->prepare($query);
+        $stmt->bindParam(1,$username);
+        $stmt->bindParam(2,$password);
+        $stmt->execute();
+        $user = $stmt->fetchAll();
+        $stmt = null;
+        return $user;
+    }
 }
 
 ?>
